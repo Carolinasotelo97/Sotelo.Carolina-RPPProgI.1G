@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define TAM 3
+
+ /*1. Crear una función llamada calcularIVA que reciba como parámetro el precio
+ bruto de un producto y devuelva el valor del impuesto (el IVA es 21%). Realizar la llamada desde main. */
+ float calcularIva (float iva);
+
+ void ordenarNotebook (eNotebook lista [], int tam, char procesadores[], char marcas[], float precios[]);
+ typedef struct
+ {
+     int id;
+     char procesador;
+     char marca;
+     float precio;
+ }eNotebook;
+
+int main()
+{
+    float precio;
+
+    int lista[TAM] = {1, 2, 3};
+    char procesador [TAM] = {'Dual Core', 'Celeron', 'AMD  Ryzen'};
+    char marca [TAM] = {'Lenovo', 'Asus', 'Acer'};
+    float precio [TAM] = {'75000', '80000', '95000'};
+
+    calcularIva(precio);
+
+    printf("%.2f", &calcularIva);
+    return 0;
+}
+
+ float calcularIva (float iva)
+ {
+     float rta = 0;
+
+     if( iva < 0 )
+     {
+         rta = iva * 0.21;
+     }
+    return rta;
+ }
+
+
+/* 2. Crear una función que se llame reemplazarCaracter que reciba una cadena de caracteres
+  como primer parámetro, como segundo parámetro el carácter a reemplazar y como tercero el
+  nuevo carácter y devuelva la cantidad de veces que se reemplazo el carácter. int reemplazarCaracter(char [], char, char); */
+
+
+ /* 3. Dada la estructura Notebook(id, procesador, marca, precio) generar una función que
+  permita ordenar un array de dicha estructura por marca. Ante igualdad de marca deberá
+  ordenarse por precio. Hardcodear datos y mostrarlos desde el main. */
+
+void ordenarNotebook (eNotebook lista [], int tam, char procesadores[], char marcas[], float precios[])
+{
+    eNotebook auxMarca;
+    eNotebook auxPrecio;
+
+
+    for(int i=0; i < tam - 1; i++)
+    {
+        for(int j= i + 1; j < tam; j++)
+        {
+            if(strcmp(lista[i].marca, lista[j].marca) < 0)
+            {
+                auxMarca = marcas[i];
+                marcas[i] = marcas[j];
+                marcas[j] = auxMarca;
+
+
+            }else if (strcmp(lista[i].marca, lista[j].marca) == 0 && lista[i].precio < lista[j].precio)
+             auxPrecio = precios[i];
+                precios[i] = precios[j];
+                precios[j] = precios;
+        }
+
+    }
+}
+
